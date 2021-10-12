@@ -2,7 +2,7 @@
 
 # HTU2xD/SHT2x/Si70xx 
 
-This is an Arduino library for TE Connectivity HTU20D/HTU21D, Sensirion SHT20/SHT21/SHT25, Silicone Labs Si7006/Si7013/Si7020/Si7021 Digital Humidity & Temperature Sensor
+This is an Arduino library for _TE Connectivity_ HTU20D/HTU21D, _Sensirion_ SHT20/SHT21/SHT25, _Silicone Labs_ Si7006/Si7013/Si7020/Si7021 Digital Humidity & Temperature Sensor
 
 - HTU2xD +1.5v..+3.6v, SHT2x +2.1v..+3.6v, Si70xx +1.9v..+3.6v
 - HTU2xD 0.14uA..0.500uA, SHT2x 0.04uA..0.330uA, Si70xx 0.6uA..180uA
