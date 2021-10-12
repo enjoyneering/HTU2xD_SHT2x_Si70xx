@@ -1,0 +1,18 @@
+{
+  "name":        "HTU2xD/SHT2x/Si70xx",
+  "keywords":    "humidity, temperature, sensirion, htu20d, htu21d, sht20, sht21, sht25, si7006, si7013, si7020, si7021, i2c",
+  "description": "HTU2xD, SHT2x, Si70xx Digital Humidity & Temperature Sensor",
+  "authors":
+  {
+    "name":  "ejoyneering",
+    "email": "enjoyneering@protonmail.com"
+  },
+  "repository":
+  {
+    "type": "git",
+    "url":  "https://github.com/enjoyneering/HTU2xD_SHT2x_Si70x.git"
+  },
+  "version":    "1.0.0",
+  "frameworks": "arduino",
+  "platforms":  "*"
+}
