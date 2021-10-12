@@ -325,7 +325,7 @@ float HTU2xD_SHT2x_SI70xx::readTemperature(HTU2XD_SHT2X_SI70XX_TEMP_OPERATION_MO
            rawTemperature |= Wire.read();      //read LSB byte & sum with MSB byte
 
   /* read 8-bit checksum from "wire.h" rxBuffer */
-  if (sensorOperationMode != READ_TEMP_AFTER_RH)
+  if (sensorOperationMode != READ_TEMP_AFTER_RH)                                        //CRC is not available with "READ_TEMP_AFTER_RH" command
   {
     if (_checkCRC8(rawTemperature) != Wire.read()) {return HTU2XD_SHT2X_SI70XX_ERROR;}; //read checksum & compare, no reason to continue
   }
