@@ -1,0 +1,54 @@
+###########################################
+# Syntax Coloring Map HTU2xD_SHT2x_SI70xx
+###########################################
+
+###########################################
+# Datatypes	(KEYWORD1)
+###########################################
+
+###########################################
+# Methods and Functions	(KEYWORD2)
+###########################################
+
+begin	KEYWORD2
+readHumidity	KEYWORD2
+getCompensatedHumidity	KEYWORD2
+readTemperature	KEYWORD2
+
+setType	KEYWORD2
+setResolution	KEYWORD2
+voltageStatus	KEYWORD2
+setHeater	KEYWORD2
+readDeviceID	KEYWORD2
+readFirmwareVersion	KEYWORD2
+softReset	KEYWORD2
+
+###########################################
+# Instances	(KEYWORD2)
+###########################################
+
+HTU2xD_SHT2x_SI70xx	KEYWORD2
+
+###########################################
+# Constants	(LITERAL1)
+###########################################
+
+HTU2XD_SHT2X_SI70XX_ERROR	LITERAL1
+
+HTU2xD_SENSOR	LITERAL1
+SHT2x_SENSOR	LITERAL1
+SI700x_SENSOR	LITERAL1
+SI701x_SENSOR	LITERAL1
+SI702x_SENSOR	LITERAL1
+
+HUMD_08BIT_TEMP_12BIT	LITERAL1
+HUMD_10BIT_TEMP_13BIT	LITERAL1
+HUMD_11BIT_TEMP_11BIT	LITERAL1
+HUMD_12BIT_TEMP_14BIT	LITERAL1
+
+START_HUMD_HOLD_I2C	LITERAL1
+START_HUMD_NOHOLD_I2C	LITERAL1
+
+START_TEMP_HOLD_I2C	LITERAL1
+START_TEMP_NOHOLD_I2C	LITERAL1
+READ_TEMP_AFTER_RH	LITERAL1
