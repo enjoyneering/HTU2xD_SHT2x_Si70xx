@@ -125,7 +125,6 @@
 /* misc */
 #define HTU2XD_SHT2X_TEMP_COEF_0C_80C           -0.15   //temperature coefficient for RH compensation at range 0C..80C, for HTU2xD/SHT2x only 
 #define HTU2XD_SHT2X_SI70XX_CRC8_POLYNOMINAL    0x13100 //16-bit CRC8 polynomial for CRC8 -> x^8 + x^5 + x^4 + 1
-#define HTU21D_FORCE_READ_TEMP                  0xFE    //force to read temperature, thanks to github user L-Carpenter
 #define HTU2XD_SHT2X_SI70XX_ERROR               0xFF    //returns 255, if CRC8 or communication error is occurred
 
 
