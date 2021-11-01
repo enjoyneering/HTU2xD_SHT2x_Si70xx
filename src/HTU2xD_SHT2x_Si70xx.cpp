@@ -88,7 +88,7 @@ HTU2xD_SHT2x_SI70xx::HTU2xD_SHT2x_SI70xx(HTU2XD_SHT2X_SI70XX_I2C_SENSOR sensorTy
       - 4 other error
 */
 /**************************************************************************/
-#if defined(__AVR__)
+#if defined (__AVR__)
 bool HTU2xD_SHT2x_SI70xx::begin(uint32_t speed, uint32_t stretch)
 {
   Wire.begin();
@@ -97,21 +97,25 @@ bool HTU2xD_SHT2x_SI70xx::begin(uint32_t speed, uint32_t stretch)
 
   Wire.setWireTimeout(stretch, false); //experimental! default 25000usec, true-Wire hardware will be automatically reset on timeout
 
-#elif defined(ESP8266) || defined(ESP32)
+#elif defined (ESP8266) || defined (ESP32)
 bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed, uint32_t stretch)
 {
   Wire.begin(sda, scl);
 
-  Wire.setClock(speed);               //experimental! ESP8266 I2C bus speed 1kHz..400kHz, default 100000Hz
+  Wire.setClock(speed);                //experimental! ESP8266 I2C bus speed 1kHz..400kHz, default 100000Hz
 
-  Wire.setClockStretchLimit(stretch); //experimental! default 150000usec
+  #if defined (ESP8266)
+  Wire.setClockStretchLimit(stretch);  //experimental! default 150000usec
+  #else
+  Wire.setTimeout(stretch / 1000);     //experimental! default 50msec
+  #endif
 
-#elif defined(_VARIANT_ARDUINO_STM32_)
+#elif defined (_VARIANT_ARDUINO_STM32_)
 bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed)
 {
   Wire.begin(sda, scl);
 
-  Wire.setClock(speed);               //experimental! STM32 I2C bus speed ???kHz..400kHz, default 100000Hz
+  Wire.setClock(speed);                //experimental! STM32 I2C bus speed ???kHz..400kHz, default 100000Hz
 
 #else
 bool HTU2xD_SHT2x_SI70xx::begin()
@@ -123,13 +127,13 @@ bool HTU2xD_SHT2x_SI70xx::begin()
   {
     case HTU2xD_SENSOR:
     case SHT2x_SENSOR:
-      delay(HTU2XD_SHT2X_POWER_ON_DELAY);               //wait for HTU2xD/SHT2x to initialize after power-on, current consumption 350uA
+      delay(HTU2XD_SHT2X_POWER_ON_DELAY); //wait for HTU2xD/SHT2x to initialize after power-on, current consumption 350uA
       break;
 
     case SI700x_SENSOR:
     case SI701x_SENSOR:
     case SI702x_SENSOR:
-      delay(SI70XX_POWER_ON_DELAY);                    //wait for Si70xx to initialize to full range after power-on
+      delay(SI70XX_POWER_ON_DELAY);       //wait for Si70xx to initialize to full range after power-on
       break;
 
     default:
