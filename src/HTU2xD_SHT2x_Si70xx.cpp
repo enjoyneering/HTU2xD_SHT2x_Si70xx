@@ -75,6 +75,7 @@ HTU2xD_SHT2x_SI70xx::HTU2xD_SHT2x_SI70xx(HTU2XD_SHT2X_SI70XX_I2C_SENSOR sensorTy
 
     NOTE:
     - call this function before doing anything else!!!
+    - speed in Hz, stretch in usec
     - sensor needs 15ms to reach idle state after power-up
     - current consumption during start up maximum 350uA
     - whenever the sensor is powered on but does not measure/communicate,
