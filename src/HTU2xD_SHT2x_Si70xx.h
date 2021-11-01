@@ -59,11 +59,11 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#if defined(__AVR__)
+#if defined (__AVR__)
 #include <avr/pgmspace.h>              //for Arduino AVR PROGMEM support
-#elif defined(ESP8266)
+#elif defined (ESP8266)
 #include <pgmspace.h>                  //for Arduino ESP8266 PROGMEM support
-#elif defined(_VARIANT_ARDUINO_STM32_)
+#elif defined (_VARIANT_ARDUINO_STM32_)
 #include <avr/pgmspace.h>              //for Arduino STM32 PROGMEM support
 #endif
 
@@ -175,11 +175,11 @@ class HTU2xD_SHT2x_SI70xx
   public:
    HTU2xD_SHT2x_SI70xx(HTU2XD_SHT2X_SI70XX_I2C_SENSOR = HTU2xD_SENSOR, HTU2XD_SHT2X_SI70XX_USER_CTRL_RES = HUMD_12BIT_TEMP_14BIT);
 
-  #if defined(__AVR__)
+  #if defined (__AVR__)
    bool     begin(uint32_t speed = HTU2XD_SHT2X_SI70XX_I2C_SPEED_100KHZ, uint32_t stretch = HTU2XD_SHT2X_SI70XX_I2C_STRETCH_USEC);
-  #elif defined(ESP8266) || defined(ESP32)
+  #elif defined (ESP8266) || defined (ESP32)
    bool     begin(uint8_t sda = SDA, uint8_t scl = SCL, uint32_t speed = HTU2XD_SHT2X_SI70XX_I2C_SPEED_100KHZ, uint32_t stretch = HTU2XD_SHT2X_SI70XX_I2C_STRETCH_USEC);
-  #elif defined(_VARIANT_ARDUINO_STM32_)
+  #elif defined (_VARIANT_ARDUINO_STM32_)
    bool     begin(uint8_t sda = SDA, uint8_t scl = SCL, uint32_t speed = HTU2XD_SHT2X_SI70XX_I2C_SPEED_100KHZ);
   #else
    bool     begin();
