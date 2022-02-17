@@ -37,7 +37,7 @@ Tested on:
 - Arduino STM32
 
 **(1)** Prolonged exposure for 60 hours at humidity > 80% can lead to a temporary drift of the signal +3%. Sensor slowly returns to the calibrated state at normal operating conditions.<br>
-**(2)** Measurement with high frequency leads to heating of the sensor, must be >= 0.5 seconds apart to keep self-heating below 0.1C<br>
+**(2)** High frequency measurement causes the sensor to heat up, the interval must be greater than 1 second to keep self-heating below 0.10C.<br>
 **(3)** Library returns 255 if a communication error occurs or CRC doesn't match.<br>
 **(4)** To remove dew from the sensor or to return the sensor to a calibrated state after prolonged exposure to humidity > 80%.
 
