@@ -5,17 +5,17 @@
 This is an Arduino library for _TE Connectivity_ HTU20D/HTU21D, _Sensirion_ SHT20/SHT21/SHT25, _Silicone Labs_ Si7006/Si7013/Si7020/Si7021 Digital Humidity & Temperature Sensor
 
 - HTU2xD +1.5v..+3.6v, SHT2x +2.1v..+3.6v, Si70xx +1.9v..+3.6v
-- HTU2xD 0.14uA..0.500uA, SHT2x 0.04uA..0.330uA, Si70xx 0.6uA..180uA
+- HTU2xD 0.14μA..0.500μA, SHT2x 0.04μA..0.330μA, Si70xx 0.6uA..180μA
 - integrated resistive heater HTU2xD/SHT2x 1.83mA, Si70xx 3.1mA..94.2mA **(4)**
-- temperature range HTU2xD/SHT2x -40C..+125C, Si702x (G-grade) -40C..+80C
+- temperature range HTU2xD/SHT2x -40°C..+125°C, Si702x (G-grade) -40°C..+80°C
 - humidity range 0%..100% **(1)**
-- typical accuracy T +-0.3C at 14-bits, RH +-2% at 12-bits
-- typical resolution T 0.01C at 14-bits, RH 0.04% at 12-bits
+- typical accuracy T +-0.3°C at 14-bits, RH +-2% at 12-bits
+- typical resolution T 0.01°C at 14-bits, RH 0.04% at 12-bits
 - maximum T measurement time Si70xx 11msec, HTU2xD 50ms, HTU2xD 85ms
 - maximum RH measurement time Si70xx 12msec, HTU2xD 16ms, HTU2xD 25ms
-- I2C bus speed 100KHz..400KHz
+- I²C bus speed 100KHz..400KHz
 - response time 8..30sec **(2)**
-- recommended to route VDD or GND between I2C lines to reduce crosstalk between SCL & SDA
+- recommended to route VDD or GND between I²C lines to reduce crosstalk between SCL & SDA
 - power supply pins must be decoupled with 100nF capacitor
 
 Supports all sensors features:
@@ -37,7 +37,7 @@ Tested on:
 - Arduino STM32
 
 **(1)** Prolonged exposure for 60 hours at humidity > 80% can lead to a temporary drift of the signal +3%. Sensor slowly returns to the calibrated state at normal operating conditions.<br>
-**(2)** High frequency measurement causes the sensor to heat up, the interval must be greater than 0.5 second to keep self-heating below 0.10C.<br>
+**(2)** High frequency measurement causes the sensor to heat up, the interval must be greater than 0.5 second to keep self-heating below 0.10°C.<br>
 **(3)** Library returns 255 if a communication error occurs or CRC doesn't match.<br>
 **(4)** To remove dew from the sensor or to return the sensor to a calibrated state after prolonged exposure to humidity > 80%.
 
