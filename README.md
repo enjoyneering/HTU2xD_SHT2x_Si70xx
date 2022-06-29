@@ -9,7 +9,7 @@ This is an Arduino library for _TE Connectivity_ HTU20D/HTU21D, _Sensirion_ SHT2
 - integrated resistive heater HTU2xD/SHT2x 1.83mA, Si70xx 3.1mA..94.2mA **(4)**
 - temperature range HTU2xD/SHT2x -40°C..+125°C, Si702x (G-grade) -40°C..+80°C
 - humidity range 0%..100% **(1)**
-- typical accuracy T +-0.3°C at 14-bits, RH +-2% at 12-bits
+- typical accuracy T ±0.3°C at 14-bits, RH ±2% at 12-bits
 - typical resolution T 0.01°C at 14-bits, RH 0.04% at 12-bits
 - maximum T measurement time Si70xx 11msec, HTU2xD 50ms, HTU2xD 85ms
 - maximum RH measurement time Si70xx 12msec, HTU2xD 16ms, HTU2xD 25ms
