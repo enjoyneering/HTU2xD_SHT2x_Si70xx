@@ -24,19 +24,19 @@
       measurements must be >= 0.5 seconds apart to keep self-heating below 0.1C
 
    This device uses I2C bus to communicate, specials pins are required to interface
-   Board:                                    SDA              SCL              Level
+   Board                                     SDA              SCL              Level
    Uno, Mini, Pro, ATmega168, ATmega328..... A4               A5               5v
    Mega2560................................. 20               21               5v
    Due, SAM3X8E............................. 20               21               3.3v
    Leonardo, Micro, ATmega32U4.............. 2                3                5v
-   Digistump, Trinket, ATtiny85............. PB0              PB2              5v
+   Digistump, Trinket, Gemma, ATtiny85...... PB0/D0           PB2/D2           3.3v/5v
    Blue Pill*, STM32F103xxxx boards*........ PB9/PB7          PB8/PB6          3.3v/5v
    ESP8266 ESP-01**......................... GPIO0            GPIO2            3.3v/5v
    NodeMCU 1.0**, WeMos D1 Mini**........... GPIO4/D2         GPIO5/D1         3.3v/5v
    ESP32***................................. GPIO21/D21       GPIO22/D22       3.3v
                                              GPIO16/D16       GPIO17/D17       3.3v
                                             *hardware I2C Wire mapped to Wire1 in stm32duino
-                                             see https://github.com/stm32duino/wiki/wiki/API#i2c
+                                             see https://github.com/stm32duino/wiki/wiki/API#I2C
                                            **most boards has 10K..12K pullup-up resistor
                                              on GPIO0/D3, GPIO2/D4/LED & pullup-down on
                                              GPIO15/D8 for flash & boot
@@ -99,7 +99,9 @@ bool HTU2xD_SHT2x_SI70xx::begin(uint32_t speed, uint32_t stretch)
 
   Wire.setClock(speed);                                    //experimental! AVR I2C bus speed 31kHz..400kHz, default 100000Hz
 
-  Wire.setWireTimeout(stretch, false);                     //experimental! default 25000usec, true=Wire hardware will be automatically reset on timeout
+  #if !defined (__AVR_ATtiny85__)                          //for backwards compatibility with ATtiny Core
+  Wire.setWireTimeout(stretch, false);                     //experimental! default 25000usec, true=Wire hardware will be automatically reset to default on timeout
+  #endif
 
 #elif defined (ESP8266)
 bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed, uint32_t stretch)
@@ -117,7 +119,7 @@ bool HTU2xD_SHT2x_SI70xx::begin(int32_t sda, int32_t scl, uint32_t speed, uint32
 
   Wire.setTimeout(stretch / 1000);                         //experimental! default 50msec
 
-#elif defined (_VARIANT_ARDUINO_STM32_)
+#elif defined (ARDUINO_ARCH_STM32)
 bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed)
 {
   Wire.begin(sda, scl);
