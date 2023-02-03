@@ -12,7 +12,7 @@
     "type": "git",
     "url":  "https://github.com/enjoyneering/HTU2xD_SHT2x_Si70x.git"
   },
-  "version":    "1.1.2",
+  "version":    "1.1.3",
   "frameworks": "arduino",
   "platforms":  "*"
 }
