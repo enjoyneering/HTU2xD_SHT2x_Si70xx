@@ -190,6 +190,13 @@ class HTU2xD_SHT2x_SI70xx
    bool     begin();
   #endif
 
+   /**
+    * @brief (re)intialize sensor
+    * @note this method won't initialize i2c assuming it has been done already
+    * 
+    */
+   bool     init_sensor();
+
    float    readHumidity(HTU2XD_SHT2X_SI70XX_HUMD_OPERATION_MODE_REG = START_HUMD_HOLD_I2C); //ARDUINO_ARCH_STM32
    float    getCompensatedHumidity(float temperature);
    float    readTemperature(HTU2XD_SHT2X_SI70XX_TEMP_OPERATION_MODE_REG = START_TEMP_HOLD_I2C); //ARDUINO_ARCH_STM32

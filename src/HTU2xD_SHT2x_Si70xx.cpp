@@ -102,6 +102,9 @@ bool HTU2xD_SHT2x_SI70xx::begin(uint32_t speed, uint32_t stretch)
   #if !defined (__AVR_ATtiny85__)                          //for backwards compatibility with ATtiny Core
   Wire.setWireTimeout(stretch, false);                     //experimental! default 25000usec, true=Wire hardware will be automatically reset to default on timeout
   #endif
+  // initialize sensor
+  return init_sensor()
+}
 
 #elif defined (ESP8266)
 bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed, uint32_t stretch)
@@ -111,6 +114,9 @@ bool HTU2xD_SHT2x_SI70xx::begin(uint8_t sda, uint8_t scl, uint32_t speed, uint32
   Wire.setClock(speed);                                    //experimental! ESP8266 I2C bus speed 1kHz..400kHz, default 100000Hz
 
   Wire.setClockStretchLimit(stretch);                      //experimental! default 150000usec
+  // initialize sensor
+  return init_sensor()
+}
 
 #elif defined (ESP32)
 bool HTU2xD_SHT2x_SI70xx::begin(int32_t sda, int32_t scl, uint32_t speed, uint32_t stretch)//"int32_t" for Master SDA & SCL, "uint8_t" for Slave SDA & SCL
@@ -118,6 +124,9 @@ bool HTU2xD_SHT2x_SI70xx::begin(int32_t sda, int32_t scl, uint32_t speed, uint32
   if (Wire.begin(sda, scl, speed) != true) {return false;} //experimental! ESP32 I2C bus speed ???kHz..400kHz, default 100000Hz
 
   Wire.setTimeout(stretch / 1000);                         //experimental! default 50msec
+  // initialize sensor
+  return init_sensor();
+}
 
 #elif defined (ARDUINO_ARCH_STM32)
 bool HTU2xD_SHT2x_SI70xx::begin(uint32_t sda, uint32_t scl, uint32_t speed) //"uint32_t" for pins only, "uint8_t" calls wrong "setSCL(PinName scl)"
@@ -125,12 +134,20 @@ bool HTU2xD_SHT2x_SI70xx::begin(uint32_t sda, uint32_t scl, uint32_t speed) //"u
   Wire.begin(sda, scl);
 
   Wire.setClock(speed);                                    //experimental! STM32 I2C bus speed ???kHz..400kHz, default 100000Hz
+  // initialize sensor
+  return init_sensor()
+}
 
 #else
 bool HTU2xD_SHT2x_SI70xx::begin()
 {
   Wire.begin();
+  // initialize sensor
+  return init_sensor()
+}
 #endif
+
+bool HTU2xD_SHT2x_SI70xx::init_sensor(){
 
   switch (_sensorType)
   {
